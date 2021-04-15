@@ -1,12 +1,7 @@
 {
 	"folders": [
 		{
-			"name": "Taller 1- Interaccion Sensores - Actuadores",
 			"path": "Taller 1- Interaccion Sensores - Actuadores"
-		},
-		{
-			"name": "Talleres_ESP_IOT",
-			"path": "."
 		}
 	],
 	"settings": {}
