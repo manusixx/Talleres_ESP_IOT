@@ -1,0 +1,41 @@
+#include <Arduino.h>
+
+/**
+ * uso del sensor de temperatura
+ * cuando el sensor detecta más de 10 grados enciende
+ */
+
+//Inicialización de variables
+int lectura = 0;
+float temperatura = 0.0;
+
+void setup() {
+    pinMode(LED_BUILTIN, OUTPUT);
+    Serial.begin(115200);
+}
+
+void loop() {
+    // Toma de lectura del sensor
+    lectura = analogRead(A0);
+    Serial.print("El valor de la lectura capturado es: " );
+    Serial.println(lectura);
+    //convertir a lectura analoga que va de 0 a 1023   a voltage que va de 0 a 3V
+    //float voltage = (lectura / 1024.0) * 3300/10;
+    float voltage = lectura * (3.3 /1024.0) ;
+    Serial.print("El valor del voltaje es: " );
+    Serial.println(voltage);
+    //Convertir a grados celcius
+    temperatura = (voltage * 100)-50;
+    Serial.print("El valor en celcius es: " );
+    Serial.println(temperatura);
+
+    if (temperatura >= 32.5  ) {
+        Serial.println("Alerta temperatura mayor a 32.5 grados celcius");
+        digitalWrite(LED_BUILTIN, LOW);
+        
+    }  else {
+        Serial.println("Temperatura normal");
+        digitalWrite(LED_BUILTIN, HIGH);
+    }
+    delay(1000);
+}
