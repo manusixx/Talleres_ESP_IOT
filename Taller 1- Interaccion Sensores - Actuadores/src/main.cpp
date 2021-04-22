@@ -8,6 +8,8 @@
 //Inicialización de variables
 int lectura = 0;
 float temperatura = 0.0;
+const int temperaturapin = A0;
+const int bombillopin = LED_BUILTIN;   
 
 void setup() {
     pinMode(LED_BUILTIN, OUTPUT);
@@ -16,7 +18,7 @@ void setup() {
 
 // Toma de lectura del sensor
 int readSensor (){
-    lectura = analogRead(A0);
+    lectura = analogRead(temperaturapin);
     Serial.print("El valor de la lectura capturado es: " );
     Serial.println(lectura);
     return lectura;
@@ -36,13 +38,13 @@ float calcTemperature(int lectura){
 
 void tmpAlert(float temperatura){
  if (temperatura >= 35.05  ) {
-        Serial.println("Alerta temperatura mayor a 32.5 grados celcius");
-        digitalWrite(LED_BUILTIN, LOW);
+        Serial.println("Alerta temperatura mayor a 35.05 grados celcius");
+        digitalWrite(bombillopin, LOW);
  }
  else
  {
      Serial.println("Temperatura normal");
-     digitalWrite(LED_BUILTIN, HIGH);
+     digitalWrite(bombillopin, HIGH);
  }
 }
 
