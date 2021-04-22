@@ -14,13 +14,16 @@ void setup() {
     Serial.begin(115200);
 }
 
-void loop() {
-    // Toma de lectura del sensor
+// Toma de lectura del sensor
+int readSensor (){
     lectura = analogRead(A0);
     Serial.print("El valor de la lectura capturado es: " );
     Serial.println(lectura);
-    //convertir a lectura analoga que va de 0 a 1023   a voltage que va de 0 a 3V
-    //float voltage = (lectura / 1024.0) * 3300/10;
+    return lectura;
+}
+
+//convertir a lectura analoga que va de 0 a 1023  a voltage que va de 0 a 3V
+float calcTemperature(int lectura){   
     float voltage = lectura * (3.3 /1024.0) ;
     Serial.print("El valor del voltaje es: " );
     Serial.println(voltage);
@@ -28,14 +31,24 @@ void loop() {
     temperatura = (voltage * 100)-50;
     Serial.print("El valor en celcius es: " );
     Serial.println(temperatura);
+    return temperatura;
+}
 
-    if (temperatura >= 32.5  ) {
+void tmpAlert(float temperatura){
+ if (temperatura >= 32.5  ) {
         Serial.println("Alerta temperatura mayor a 32.5 grados celcius");
         digitalWrite(LED_BUILTIN, LOW);
-        
-    }  else {
-        Serial.println("Temperatura normal");
-        digitalWrite(LED_BUILTIN, HIGH);
-    }
+ }
+ else
+ {
+     Serial.println("Temperatura normal");
+     digitalWrite(LED_BUILTIN, HIGH);
+ }
+}
+
+void loop() {
+    lectura = readSensor ();
+    temperatura = calcTemperature(lectura);   
+    tmpAlert(temperatura);   
     delay(1000);
 }
