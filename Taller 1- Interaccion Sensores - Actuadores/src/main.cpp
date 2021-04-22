@@ -35,7 +35,7 @@ float calcTemperature(int lectura){
 }
 
 void tmpAlert(float temperatura){
- if (temperatura >= 32.5  ) {
+ if (temperatura >= 35.05  ) {
         Serial.println("Alerta temperatura mayor a 32.5 grados celcius");
         digitalWrite(LED_BUILTIN, LOW);
  }
