@@ -140,5 +140,4 @@ void loop()
                      dataFieldTwo, estadobombillo, dataFieldThree, estadoventilador,
                      dataFieldFour, millis());
     }
-    //  delay(1000);
 }
