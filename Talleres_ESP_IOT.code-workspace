@@ -2,6 +2,10 @@
 	"folders": [
 		{
 			"path": "Taller 1- Interaccion Sensores - Actuadores"
+		},
+		{
+			"name": "Taller 4-envio info MQTT",
+			"path": "C:\\Users\\Auxiliaresadm\\Documents\\PlatformIO\\Projects\\Taller 4-envio info MQTT"
 		}
 	],
 	"settings": {}
